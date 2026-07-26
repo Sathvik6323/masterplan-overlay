@@ -45,8 +45,10 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 .drop-zone .file-btn{background:#3498db;color:#fff;padding:8px 18px;border-radius:4px;cursor:pointer;font-size:13px;font-weight:500;display:inline-block}
 .drop-zone .file-btn:hover{background:#2980b9}
 /* Image container */
-.image-container{width:100%;height:100%;overflow:auto;cursor:crosshair;background:#e8e8e8;position:relative}
-.image-container canvas{display:block}
+.image-container{width:100%;height:100%;overflow:hidden;background:#e8e8e8;position:relative;-webkit-user-select:none;user-select:none}
+.image-wrapper{transform-origin:0 0;cursor:grab}
+.image-wrapper:active{cursor:grabbing}
+.image-container canvas{display:block;pointer-events:none}
 /* Image markers */
 .img-marker{position:absolute;width:26px;height:26px;border-radius:50%;background:rgba(231,76,60,0.88);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;cursor:pointer;transform:translate(-50%,-50%);z-index:100;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.35);transition:transform .12s;user-select:none}
 .img-marker:hover{transform:translate(-50%,-50%) scale(1.25);z-index:101}
@@ -231,6 +233,22 @@ let currentFile = null;     // File object
 let pdfDoc = null;
 let restoreResolve = null;
 
+// Image zoom/pan
+let imageWrapper = null;
+let imageZoom = 1;
+let imagePanX = 0;
+let imagePanY = 0;
+let isDragging = false;
+let dragStartX = 0;
+let dragStartY = 0;
+let dragPanStartX = 0;
+let dragPanStartY = 0;
+let didPan = false;
+let touchStartX = 0;
+let touchStartY = 0;
+let touchDidPan = false;
+let lastTouchDist = 0;
+
 const LS_KEY = 'mp_georef_session';
 const IMAGE_CONTAINER = document.getElementById('imageContainer');
 const DROP_ZONE = document.getElementById('dropZone');
@@ -241,6 +259,114 @@ const DOWNLOAD_LINK = document.getElementById('downloadLink');
 const STATUS = document.getElementById('statusText');
 const POINT_COUNT = document.getElementById('pointCount');
 const POINT_MIN = document.getElementById('pointMin');
+
+// ============= IMAGE ZOOM / PAN =============
+function applyImageTransform() {
+  if (imageWrapper) {
+    imageWrapper.style.transform = `translate(${imagePanX}px,${imagePanY}px) scale(${imageZoom})`;
+  }
+}
+
+function resetImageTransform() {
+  imageZoom = 1;
+  imagePanX = 0;
+  imagePanY = 0;
+  isDragging = false;
+  didPan = false;
+  touchDidPan = false;
+  applyImageTransform();
+}
+
+function onImageWheel(e) {
+  if (!canvas || !imageWrapper) return;
+  e.preventDefault();
+  const rect = IMAGE_CONTAINER.getBoundingClientRect();
+  const mx = e.clientX - rect.left;
+  const my = e.clientY - rect.top;
+  const factor = e.deltaY > 0 ? 0.88 : 1.14;
+  const nz = Math.min(Math.max(imageZoom * factor, 0.2), 10);
+  imagePanX = mx - (mx - imagePanX) * (nz / imageZoom);
+  imagePanY = my - (my - imagePanY) * (nz / imageZoom);
+  imageZoom = nz;
+  applyImageTransform();
+}
+
+function onImageMouseDown(e) {
+  if (e.button !== 0 || !canvas) return;
+  isDragging = false;
+  didPan = false;
+  dragStartX = e.clientX;
+  dragStartY = e.clientY;
+  dragPanStartX = imagePanX;
+  dragPanStartY = imagePanY;
+  IMAGE_CONTAINER.style.cursor = 'grabbing';
+}
+
+function onImageMouseMove(e) {
+  if (!isDragging) {
+    if (e.buttons !== 1 || !canvas) return;
+    const dx = e.clientX - dragStartX;
+    const dy = e.clientY - dragStartY;
+    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) isDragging = true;
+    if (!isDragging) return;
+  }
+  didPan = true;
+  imagePanX = dragPanStartX + (e.clientX - dragStartX);
+  imagePanY = dragPanStartY + (e.clientY - dragStartY);
+  applyImageTransform();
+}
+
+function onImageMouseUp() {
+  if (!canvas) return;
+  IMAGE_CONTAINER.style.cursor = 'grab';
+}
+
+function onImageTouchStart(e) {
+  if (!canvas || !imageWrapper) return;
+  if (e.touches.length === 1) {
+    const t = e.touches[0];
+    touchStartX = t.clientX;
+    touchStartY = t.clientY;
+    touchDidPan = false;
+    dragPanStartX = imagePanX;
+    dragPanStartY = imagePanY;
+  } else if (e.touches.length === 2) {
+    const dx = e.touches[0].clientX - e.touches[1].clientX;
+    const dy = e.touches[0].clientY - e.touches[1].clientY;
+    lastTouchDist = Math.sqrt(dx * dx + dy * dy);
+    dragPanStartX = imagePanX;
+    dragPanStartY = imagePanY;
+  }
+}
+
+function onImageTouchMove(e) {
+  if (!canvas || !imageWrapper) return;
+  if (e.touches.length === 1) {
+    const dx = e.touches[0].clientX - touchStartX;
+    const dy = e.touches[0].clientY - touchStartY;
+    if (Math.abs(dx) > 5 || Math.abs(dy) > 5) touchDidPan = true;
+    if (touchDidPan) {
+      imagePanX = dragPanStartX + dx;
+      imagePanY = dragPanStartY + dy;
+      applyImageTransform();
+    }
+  } else if (e.touches.length === 2) {
+    e.preventDefault();
+    const dx = e.touches[0].clientX - e.touches[1].clientX;
+    const dy = e.touches[0].clientY - e.touches[1].clientY;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    if (lastTouchDist > 0) {
+      const s = Math.min(Math.max(imageZoom * (dist / lastTouchDist), 0.2), 10);
+      imageZoom = s;
+      applyImageTransform();
+    }
+    lastTouchDist = dist;
+  }
+}
+
+function onImageTouchEnd() {
+  if (touchDidPan) didPan = true;
+}
 
 // ============= CITIES =============
 let cities = [];
@@ -331,6 +457,7 @@ function setStatus(msg, isGood) {
 
 // ============= IMAGE CLICK =============
 function onImageClick(e) {
+  if (didPan) { didPan = false; return; }
   if (!canvas) return;
   const rect = canvas.getBoundingClientRect();
   const scaleX = canvas.width / rect.width;
@@ -396,10 +523,9 @@ function onMapClick(e) {
 
 // ============= RENDER MARKERS =============
 function renderImageMarkers() {
-  // Remove old markers
-  IMAGE_CONTAINER.querySelectorAll('.img-marker').forEach(el => el.remove());
+  if (!imageWrapper) return;
+  imageWrapper.querySelectorAll('.img-marker').forEach(el => el.remove());
 
-  // Completed points
   points.forEach(p => {
     const div = document.createElement('div');
     div.className = 'img-marker';
@@ -408,10 +534,9 @@ function renderImageMarkers() {
     div.style.top = p.pixelY + 'px';
     div.title = `Point #${p.id} — ${p.lat.toFixed(5)}, ${p.lng.toFixed(5)}`;
     div.addEventListener('click', (ev) => { ev.stopPropagation(); confirmDeletePoint(p.id); });
-    IMAGE_CONTAINER.appendChild(div);
+    imageWrapper.appendChild(div);
   });
 
-  // Pending point on image side
   if (pendingSide === 'image' && pendingData) {
     const div = document.createElement('div');
     div.className = 'img-marker pending';
@@ -420,7 +545,7 @@ function renderImageMarkers() {
     div.style.top = pendingData.pixelY + 'px';
     div.title = 'Pending — click the corresponding spot on the map';
     div.addEventListener('click', (ev) => { ev.stopPropagation(); cancelPending(); });
-    IMAGE_CONTAINER.appendChild(div);
+    imageWrapper.appendChild(div);
   }
 }
 
@@ -543,12 +668,13 @@ async function handleFile(file) {
   IMAGE_CONTAINER.style.display = 'block';
 
   try {
+    resetImageTransform();
     if (ext === 'pdf') {
       await renderPDF(file);
     } else {
       await renderImage(file);
     }
-    setStatus(`Loaded: ${file.name}. Click on the image, then the map to place points.`);
+    setStatus(`Loaded: ${file.name}. Scroll to zoom, drag to pan, click to place points.`);
   } catch(err) {
     setStatus('Error loading file: ' + err.message);
     DROP_ZONE.style.display = 'flex';
@@ -574,8 +700,11 @@ async function renderPDF(file) {
   const ctx = canvas.getContext('2d');
   await page.render({canvasContext: ctx, viewport: scaled}).promise;
   IMAGE_CONTAINER.innerHTML = '';
-  IMAGE_CONTAINER.appendChild(canvas);
-  IMAGE_CONTAINER.addEventListener('click', onImageClick, {once: false});
+  imageWrapper = document.createElement('div');
+  imageWrapper.className = 'image-wrapper';
+  imageWrapper.appendChild(canvas);
+  IMAGE_CONTAINER.appendChild(imageWrapper);
+  resetImageTransform();
 }
 
 async function renderImage(file) {
@@ -598,8 +727,11 @@ async function renderImage(file) {
   ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
   URL.revokeObjectURL(url);
   IMAGE_CONTAINER.innerHTML = '';
-  IMAGE_CONTAINER.appendChild(canvas);
-  IMAGE_CONTAINER.addEventListener('click', onImageClick, {once: false});
+  imageWrapper = document.createElement('div');
+  imageWrapper.className = 'image-wrapper';
+  imageWrapper.appendChild(canvas);
+  IMAGE_CONTAINER.appendChild(imageWrapper);
+  resetImageTransform();
 }
 
 // ============= GCP DOWNLOAD =============
@@ -803,6 +935,16 @@ document.addEventListener('keydown', (e) => {
     if (pendingSide) cancelPending();
   }
 });
+
+// ============= ZOOM / PAN EVENTS =============
+IMAGE_CONTAINER.addEventListener('wheel', onImageWheel, {passive: false});
+IMAGE_CONTAINER.addEventListener('mousedown', onImageMouseDown);
+document.addEventListener('mousemove', onImageMouseMove);
+document.addEventListener('mouseup', onImageMouseUp);
+IMAGE_CONTAINER.addEventListener('touchstart', onImageTouchStart, {passive: false});
+IMAGE_CONTAINER.addEventListener('touchmove', onImageTouchMove, {passive: false});
+document.addEventListener('touchend', onImageTouchEnd);
+IMAGE_CONTAINER.addEventListener('click', onImageClick);
 
 // ============= INIT =============
 setStatus('Select a city or upload a master plan to get started.');
