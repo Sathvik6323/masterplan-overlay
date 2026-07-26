@@ -108,6 +108,8 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
     <span class="spacer"></span>
     <button class="btn-primary" id="btnSubmit">Submit via Issue</button>
     <button class="btn-success" id="btnDownload" disabled>Download GCP</button>
+    <button class="btn-secondary" id="btnUploadGCP">Upload GCP</button>
+    <input type="file" id="gcpInput" accept=".gcp,.csv,.txt" style="display:none">
     <button class="btn-secondary" id="btnRemoveLast" disabled>Remove Last</button>
     <button class="btn-danger" id="btnReset" disabled>Reset All</button>
     <button class="btn-secondary" id="btnHelp">Help</button>
@@ -151,7 +153,22 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
     <p>This tool is for <strong>educational purposes only</strong>.</p>
     <p>When placing points, please be <strong>as accurate as possible</strong> — the quality of the georeferenced output depends entirely on the precision of your control points. Use recognizable landmarks like road intersections, building corners, or other permanent features.</p>
     <p style="font-size:12px;color:#888;margin-top:10px">Master plan data sourced from the Directorate of Town &amp; Country Planning, Govt. of Andhra Pradesh. This project is not affiliated with or endorsed by any government body.</p>
-    <div class="buttons"><button class="btn-primary" onclick="document.getElementById('disclaimerModal').style.display='none'">I Understand</button></div>
+    <div class="buttons"><button class="btn-primary" onclick="dismissDisclaimer()">I Understand</button></div>
+  </div>
+</div>
+
+<!-- Guide Modal -->
+<div class="modal-overlay" id="guideModal" style="display:none">
+  <div class="modal">
+    <h2>How to Use This Tool</h2>
+    <ol style="font-size:13px;line-height:1.7;margin:8px 0 12px 20px;color:#555">
+      <li><strong>Select your city</strong> — search and pick your city from the dropdown, then download the master plan PDF/JPG.</li>
+      <li><strong>Upload the file</strong> — drag it onto the left panel or click "Choose File". The PDF/image renders automatically.</li>
+      <li><strong>Place GCP points</strong> — click a recognizable landmark on the master plan, then click the same spot on the satellite map. Repeat at least 10 times with points spread across the area.</li>
+      <li><strong>Download GCP</strong> — export the <code>.gcp</code> file for use in QGIS. Or <strong>Upload GCP</strong> — verify someone else's points by loading their file and visually checking marker alignment.</li>
+    </ol>
+    <p style="font-size:12px;color:#888">Tip: Pick points far apart (different corners of the city) for best accuracy.</p>
+    <div class="buttons"><button class="btn-primary" onclick="dismissGuide()">Got it</button></div>
   </div>
 </div>
 
@@ -166,6 +183,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
       <li><strong>Click the same spot</strong> on the satellite map (right). A numbered pair is created.</li>
       <li>Repeat <strong>10–12 times</strong> with points spread across the city. More = better accuracy.</li>
       <li>Click <strong>Download GCP</strong> to get the QGIS-compatible file.</li>
+      <li>Click <strong>Upload GCP</strong> to load a <code>.gcp</code> file and visually verify points on both panels.</li>
       <li>Click <strong>Submit via Issue</strong> to open a GitHub Issue with your file attached.</li>
     </ol>
     <p style="font-size:12px;color:#888">Tip: Pick points far apart from each other (different corners of the city) for best results.</p>
@@ -608,6 +626,66 @@ function downloadGCP() {
   setStatus(`Downloaded ${city}_points.gcp with ${points.length} points. Ready to submit!`, true);
 }
 
+// ============= GCP UPLOAD =============
+document.getElementById('btnUploadGCP').addEventListener('click', () => {
+  document.getElementById('gcpInput').click();
+});
+
+document.getElementById('gcpInput').addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  try {
+    const text = await file.text();
+    const lines = text.trim().split('\n').filter(l => !l.startsWith('#') && l.trim());
+    let newPoints = [];
+
+    // Try space-delimited .gcp: lng lat pixelX pixelY ...
+    for (const line of lines) {
+      const parts = line.trim().split(/\s+/);
+      if (parts.length >= 4) {
+        const lng = parseFloat(parts[0]);
+        const lat = parseFloat(parts[1]);
+        const pixelX = parseFloat(parts[2]);
+        const pixelY = parseFloat(parts[3]);
+        if (!isNaN(lat) && !isNaN(lng) && !isNaN(pixelX) && !isNaN(pixelY)) {
+          newPoints.push({id: 0, pixelX, pixelY, lat, lng});
+        }
+      }
+    }
+
+    // Try CSV: imgX,imgY,mapLat,mapLng
+    if (newPoints.length === 0) {
+      for (const line of lines) {
+        const parts = line.split(',').map(s => parseFloat(s.trim()));
+        if (parts.length >= 4) {
+          const [imgX, imgY, mapLat, mapLng] = parts;
+          if (!isNaN(imgX) && !isNaN(imgY) && !isNaN(mapLat) && !isNaN(mapLng)) {
+            newPoints.push({id: 0, pixelX: imgX, pixelY: imgY, lat: mapLat, lng: mapLng});
+          }
+        }
+      }
+    }
+
+    if (newPoints.length === 0) {
+      setStatus('No valid points found. Expected format: lng lat pixelX pixelY');
+      return;
+    }
+    newPoints.forEach((p, i) => p.id = i + 1);
+    points = newPoints;
+    nextId = points.length + 1;
+    renderAll();
+    updatePointUI();
+    if (points.length > 0) {
+      map.fitBounds(points.map(p => [p.lat, p.lng]), {padding: [30, 30]});
+    }
+    setStatus(`Loaded ${points.length} verification points from ${file.name}.`, true);
+    saveSession();
+  } catch(err) {
+    setStatus('Error reading GCP file: ' + err.message);
+  }
+  e.target.value = '';
+});
+
 // ============= SUBMIT VIA ISSUE =============
 document.getElementById('btnSubmit').addEventListener('click', submitIssue);
 
@@ -616,8 +694,10 @@ function submitIssue() {
     setStatus('Place at least 10 points before submitting.');
     return;
   }
-  const city = CITY_SELECT.value || 'unknown';
-  const cityName = CITY_SELECT.selectedOptions[0]?.textContent || city;
+  const cityId = CITY_SELECT.value;
+  const cityObj = cities.find(c => c.id === cityId);
+  const city = cityId || 'unknown';
+  const cityName = cityObj ? `${cityObj.name}, ${cityObj.state}` : city;
   const body = encodeURIComponent(
     `## City\n${cityName}\n\n## Points\n${points.length} control points placed.\n\n## GCP File\nPlease attach the downloaded \`${city}_points.gcp\` file to this issue.\n\n---\n*Submitted via Master Plan GeoRef Tool*`
   );
@@ -695,6 +775,15 @@ document.getElementById('btnReset').addEventListener('click', resetAll);
 
 function closeModal(id) {
   document.getElementById(id).style.display = 'none';
+}
+
+function dismissDisclaimer() {
+  document.getElementById('disclaimerModal').style.display = 'none';
+  document.getElementById('guideModal').style.display = 'flex';
+}
+
+function dismissGuide() {
+  document.getElementById('guideModal').style.display = 'none';
 }
 
 // Close modals on overlay click
