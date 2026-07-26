@@ -254,6 +254,7 @@ CITY_SELECT.addEventListener('change', () => {
     const ext = fileUrl.split('.').pop().toUpperCase();
     DOWNLOAD_LINK.textContent = `Download ${city.name} (${ext}) ↗`;
     setStatus(`Step 1: Download ${city.name}'s master plan, then upload it below.`);
+    if (city.lat && city.lng) map.flyTo([city.lat, city.lng], 12);
   } else {
     DOWNLOAD_LINK.style.display = 'none';
     if (id) setStatus('No file link available for this city. Upload your own file.');
@@ -652,6 +653,7 @@ function restoreSession() {
       DOWNLOAD_LINK.style.display = 'inline';
       const ext = fileUrl.split('.').pop().toUpperCase();
       DOWNLOAD_LINK.textContent = `Download ${city.name} (${ext}) ↗`;
+      if (city.lat && city.lng) map.flyTo([city.lat, city.lng], 12);
     }
     renderAll();
     updatePointUI();

@@ -3,720 +3,960 @@
     "id": "addanki",
     "name": "Addanki",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/2X76a9iK.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/2X76a9iK.pdf",
+    "lat": 15.8110285,
+    "lng": 79.9737896
   },
   {
     "id": "adoni",
     "name": "Adoni",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2025/08May2025/gIzwTqE0.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2025/08May2025/gIzwTqE0.pdf",
+    "lat": 15.6261417,
+    "lng": 77.2723701
   },
   {
     "id": "akiveedu",
     "name": "Akiveedu",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Nov2024/18Nov2024/wV8Y1lVs.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Nov2024/18Nov2024/wV8Y1lVs.pdf",
+    "lat": 16.5813292,
+    "lng": 81.3822301
   },
   {
     "id": "allagadda",
     "name": "Allagadda",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/E7msrSWh.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/E7msrSWh.jpg",
+    "lat": 15.1333484,
+    "lng": 78.51254
   },
   {
     "id": "alluru",
     "name": "Alluru",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/Z7KwkIS2.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/Z7KwkIS2.jpg",
+    "lat": 15.934678,
+    "lng": 80.6293219
   },
   {
     "id": "amalapuram",
     "name": "Amalapuram",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Apr2025/17Apr2025/AxGlMck3.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Apr2025/17Apr2025/AxGlMck3.pdf",
+    "lat": 16.5777179,
+    "lng": 82.0032621
   },
   {
     "id": "amudalavalasa",
     "name": "Amudalavalasa",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/YvSLPNTv.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/YvSLPNTv.pdf",
+    "lat": 18.5512961,
+    "lng": 83.7216345
   },
   {
     "id": "anantapur",
     "name": "Anantapur",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/aEDiCyGX.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/aEDiCyGX.pdf",
+    "lat": 14.6783221,
+    "lng": 77.6065039
   },
   {
     "id": "atmakur",
     "name": "Atmakur",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/284P1HU4.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/284P1HU4.jpg",
+    "lat": 14.669176,
+    "lng": 79.5743613
   },
   {
     "id": "atmakur",
     "name": "Atmakur",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Jun2026/17Jun2026/TmDLD8Xu.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Jun2026/17Jun2026/TmDLD8Xu.pdf",
+    "lat": 14.669176,
+    "lng": 79.5743613
   },
   {
     "id": "b-kothakota",
     "name": "B. Kothakota",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/LdECLMvl.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/LdECLMvl.jpg",
+    "lat": 13.6677345,
+    "lng": 78.3251314
   },
   {
     "id": "badvel",
     "name": "Badvel",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/JllsFIR0.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/JllsFIR0.jpg",
+    "lat": 14.7433614,
+    "lng": 79.0610394
   },
   {
     "id": "bapatla",
     "name": "Bapatla",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/2T6JPPB2.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/2T6JPPB2.pdf",
+    "lat": 15.9344304,
+    "lng": 80.4505522
   },
   {
     "id": "bethamcherla",
     "name": "Bethamcherla",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/ZT2b0Oe9.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/ZT2b0Oe9.pdf",
+    "lat": 15.4517249,
+    "lng": 78.1471135
   },
   {
     "id": "bhimavaram",
     "name": "Bhimavaram",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Nov2024/11Nov2024/HZtDmykL.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Nov2024/11Nov2024/HZtDmykL.pdf",
+    "lat": 16.4818104,
+    "lng": 81.5329358
   },
   {
     "id": "bobbili",
     "name": "Bobbili",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/Z9Yy7eCw.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/Z9Yy7eCw.pdf",
+    "lat": 18.5748202,
+    "lng": 83.3522594
   },
   {
     "id": "buchireddypalem",
     "name": "Buchireddypalem",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/mzWIFAEl.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/mzWIFAEl.jpg",
+    "lat": 16.9369524,
+    "lng": 80.4470912
   },
   {
     "id": "chilakaluripet",
     "name": "Chilakaluripet",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/v5ShktFI.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/v5ShktFI.pdf",
+    "lat": 16.0949502,
+    "lng": 80.1658779
   },
   {
     "id": "chimakurthi",
     "name": "Chimakurthi",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/qyG8lQ5k.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/qyG8lQ5k.jpg",
+    "lat": 15.5850996,
+    "lng": 79.8663517
   },
   {
     "id": "chintalapudi",
     "name": "Chintalapudi",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/113Kf0IF.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/113Kf0IF.pdf",
+    "lat": 17.0976285,
+    "lng": 80.9637011
   },
   {
     "id": "chirala",
     "name": "Chirala",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/4AISBVhm.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/4AISBVhm.pdf",
+    "lat": 15.8309139,
+    "lng": 80.3543618
   },
   {
     "id": "chittoor",
     "name": "Chittoor",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Dec2024/09Dec2024/PgfCGu9t.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Dec2024/09Dec2024/PgfCGu9t.pdf",
+    "lat": 13.325036,
+    "lng": 79.6480611
   },
   {
     "id": "dachepalli",
     "name": "Dachepalli",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/57Na4mlL.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/57Na4mlL.jpg",
+    "lat": 16.5932206,
+    "lng": 79.7363829
   },
   {
     "id": "dharmavaram",
     "name": "Dharmavaram",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/kE9KXNad.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/kE9KXNad.pdf",
+    "lat": 14.4138405,
+    "lng": 77.7208432
   },
   {
     "id": "dhone",
     "name": "Dhone",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/IU7xAO7M.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/IU7xAO7M.pdf",
+    "lat": 15.3969719,
+    "lng": 77.8718482
   },
   {
     "id": "eluru",
     "name": "Eluru",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Apr2025/17Apr2025/3xYXakRb.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Apr2025/17Apr2025/3xYXakRb.pdf",
+    "lat": 16.7104257,
+    "lng": 81.1153816
   },
   {
     "id": "giddaluru",
     "name": "Giddaluru",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/GTaiasoR.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/GTaiasoR.jpg",
+    "lat": 15.3695299,
+    "lng": 78.9191855
   },
   {
     "id": "gollaprolu",
     "name": "Gollaprolu",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/B5YKgvPD.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/B5YKgvPD.pdf",
+    "lat": 17.1560346,
+    "lng": 82.286621
   },
   {
     "id": "gooty",
     "name": "Gooty",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/11Sep2024/7DUs3yzQ.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/11Sep2024/7DUs3yzQ.jpg",
+    "lat": 15.12279,
+    "lng": 77.636011
   },
   {
     "id": "gudivada",
     "name": "Gudivada",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/7l3zAnWW.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/7l3zAnWW.pdf",
+    "lat": 16.4330413,
+    "lng": 80.9936856
   },
   {
     "id": "gudur",
     "name": "Gudur",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/5WfYJ0RI.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/5WfYJ0RI.pdf",
+    "lat": 14.1455934,
+    "lng": 79.8474512
   },
   {
     "id": "gudur",
     "name": "Gudur",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/wyhd64Eq.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/wyhd64Eq.pdf",
+    "lat": 14.1455934,
+    "lng": 79.8474512
   },
   {
     "id": "guntakal",
     "name": "Guntakal",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Nov2024/21Nov2024/gCKxxk0l.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Nov2024/21Nov2024/gCKxxk0l.pdf",
+    "lat": 15.163811,
+    "lng": 77.3761354
   },
   {
     "id": "guntur",
     "name": "Guntur",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/hWkjZUyq.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/hWkjZUyq.pdf",
+    "lat": 16.2915189,
+    "lng": 80.4541588
   },
   {
     "id": "gurazala",
     "name": "Gurazala",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/JhJNMq2E.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/JhJNMq2E.jpg",
+    "lat": 16.5589293,
+    "lng": 79.6368235
   },
   {
     "id": "gvmc",
     "name": "GVMC",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/SkxVKFhQ.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/SkxVKFhQ.pdf",
+    "lat": 17.7017453,
+    "lng": 83.2948485
   },
   {
     "id": "hindupur",
     "name": "Hindupur",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/3vQj4hUC.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/3vQj4hUC.pdf",
+    "lat": 13.8306127,
+    "lng": 77.492635
   },
   {
     "id": "ichapuram",
     "name": "Ichapuram",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/e9EmpWdS.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/e9EmpWdS.pdf",
+    "lat": 18.9020347,
+    "lng": 83.7092318
   },
   {
     "id": "jaggaiahpeta",
     "name": "jAGGAIAHPETA",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Apr2025/29Apr2025/QUzQJWxJ.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Apr2025/29Apr2025/QUzQJWxJ.pdf",
+    "lat": 16.892504,
+    "lng": 80.097117
   },
   {
     "id": "jammalamadugu",
     "name": "Jammalamadugu",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2026/06May2026/dGl5TZIC.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2026/06May2026/dGl5TZIC.pdf",
+    "lat": 14.8473457,
+    "lng": 78.382172
   },
   {
     "id": "jangareddygudem",
     "name": "Jangareddygudem",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2026/06May2026/PcdxXVA4.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2026/06May2026/PcdxXVA4.pdf",
+    "lat": 17.1238205,
+    "lng": 81.2959633
   },
   {
     "id": "kadapa",
     "name": "kadapa",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2025/28May2025/a4YrnthH.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2025/28May2025/a4YrnthH.pdf",
+    "lat": 14.4752936,
+    "lng": 78.8216861
   },
   {
     "id": "kadiri",
     "name": "Kadiri",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/QogrZ4rT.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/QogrZ4rT.jpg",
+    "lat": 14.1082305,
+    "lng": 78.161069
   },
   {
     "id": "kakinada",
     "name": "Kakinada",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Apr2025/17Apr2025/XwD52YZP.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Apr2025/17Apr2025/XwD52YZP.pdf",
+    "lat": 16.9437385,
+    "lng": 82.2350607
   },
   {
     "id": "kalyanadurg",
     "name": "Kalyanadurg",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/Nrv6PCbe.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/Nrv6PCbe.jpg",
+    "lat": 14.5410188,
+    "lng": 77.2157886
   },
   {
     "id": "kandukur",
     "name": "Kandukur",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/yg5mcU6G.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/yg5mcU6G.pdf",
+    "lat": 15.213,
+    "lng": 79.9071
   },
   {
     "id": "kanigiri",
     "name": "Kanigiri",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/78y5OR8g.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/78y5OR8g.jpg",
+    "lat": 15.4066776,
+    "lng": 79.5066808
   },
   {
     "id": "kavali",
     "name": "Kavali",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Dec2025/05Dec2025/spwcjmWr.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Dec2025/05Dec2025/spwcjmWr.pdf",
+    "lat": 14.9135846,
+    "lng": 79.9926902
   },
   {
     "id": "kondapalli",
     "name": "Kondapalli",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Nov2024/18Nov2024/Qo2iAVE1.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Nov2024/18Nov2024/Qo2iAVE1.pdf",
+    "lat": 16.6237078,
+    "lng": 80.5468796
   },
   {
     "id": "kovvur",
     "name": "Kovvur",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2026/06May2026/SGwUY0iE.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2026/06May2026/SGwUY0iE.pdf",
+    "lat": 17.015932,
+    "lng": 81.7109188
   },
   {
     "id": "kuppam",
     "name": "Kuppam",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Dec2024/09Dec2024/8WLRbtRd.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Dec2024/09Dec2024/8WLRbtRd.pdf",
+    "lat": 12.7452259,
+    "lng": 78.344331
   },
   {
     "id": "kurnool",
     "name": "Kurnool",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/eAAXe7Pj.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/eAAXe7Pj.pdf",
+    "lat": 15.8309251,
+    "lng": 78.0425373
   },
   {
     "id": "macheral",
     "name": "Macheral",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/r9FV2EBG.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/r9FV2EBG.pdf",
+    "lat": 16.4764279,
+    "lng": 79.4366404
   },
   {
     "id": "machilipatnam",
     "name": "Machilipatnam",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/tqIdQG8R.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/tqIdQG8R.pdf",
+    "lat": 16.1817369,
+    "lng": 81.1348181
   },
   {
     "id": "madakasira",
     "name": "Madakasira",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/o4v23sgl.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/o4v23sgl.jpg",
+    "lat": 13.9405457,
+    "lng": 77.272588
   },
   {
     "id": "madanapalle",
     "name": "Madanapalle",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Apr2025/16Apr2025/RQiIFiiR.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Apr2025/16Apr2025/RQiIFiiR.pdf",
+    "lat": 13.555824,
+    "lng": 78.5014943
   },
   {
     "id": "mandapet",
     "name": "Mandapet",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Jun2026/15Jun2026/8p7FGmKg.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Jun2026/15Jun2026/8p7FGmKg.pdf",
+    "lat": 16.8634704,
+    "lng": 81.9300945
   },
   {
     "id": "mangalagiri-tadepalli",
     "name": "Mangalagiri Tadepalli",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/Cox5ZDWE.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/Cox5ZDWE.pdf",
+    "lat": 16.445758,
+    "lng": 80.6000172
   },
   {
     "id": "markapur",
     "name": "Markapur",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2026/06May2026/SrV7lZ9l.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2026/06May2026/SrV7lZ9l.pdf",
+    "lat": 15.7406698,
+    "lng": 79.2698502
   },
   {
     "id": "mummidivaram",
     "name": "Mummidivaram",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2025/15Sep2025/y051cnur.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2025/15Sep2025/y051cnur.pdf",
+    "lat": 16.6442012,
+    "lng": 82.1078853
   },
   {
     "id": "mydukur",
     "name": "Mydukur",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Jul2026/03Jul2026/FhlBlNbO.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Jul2026/03Jul2026/FhlBlNbO.pdf",
+    "lat": 14.8593734,
+    "lng": 78.7715239
   },
   {
     "id": "nagari",
     "name": "Nagari",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/LGrRQLXg.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/LGrRQLXg.jpg",
+    "lat": 13.3206306,
+    "lng": 79.5852938
   },
   {
     "id": "naidupet",
     "name": "Naidupet",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/amRtkJm5.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/amRtkJm5.pdf",
+    "lat": 13.9289179,
+    "lng": 79.8327094
   },
   {
     "id": "nandigama",
     "name": "Nandigama",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/E6RIXQRN.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/E6RIXQRN.jpg",
+    "lat": 16.7734733,
+    "lng": 80.2855279
   },
   {
     "id": "nandikotkur",
     "name": "Nandikotkur",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Jul2026/03Jul2026/AGPSaFNt.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Jul2026/03Jul2026/AGPSaFNt.pdf",
+    "lat": 15.8562,
+    "lng": 78.27
   },
   {
     "id": "nandyal",
     "name": "Nandyal",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Dec2024/09Dec2024/pmDzKR4b.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Dec2024/09Dec2024/pmDzKR4b.pdf",
+    "lat": 15.4736293,
+    "lng": 78.4806592
   },
   {
     "id": "narsapur",
     "name": "Narsapur",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/rFoGa9B7.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/rFoGa9B7.pdf",
+    "lat": 16.4405615,
+    "lng": 81.7024526
   },
   {
     "id": "narsaraopet",
     "name": "Narsaraopet",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2025/23Sep2025/C4ODazm8.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2025/23Sep2025/C4ODazm8.pdf",
+    "lat": 16.2389242,
+    "lng": 80.0472879
   },
   {
     "id": "narsipatnam",
     "name": "Narsipatnam",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/GlpKJdfs.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/GlpKJdfs.pdf",
+    "lat": 17.6711811,
+    "lng": 82.6124371
   },
   {
     "id": "nellimarla",
     "name": "Nellimarla",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/OiCqIf55.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/OiCqIf55.pdf",
+    "lat": 18.162553,
+    "lng": 83.4473402
   },
   {
     "id": "nellore",
     "name": "Nellore",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Dec2025/05Dec2025/g0LPrGSv.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Dec2025/05Dec2025/g0LPrGSv.pdf",
+    "lat": 14.4493717,
+    "lng": 79.9873763
   },
   {
     "id": "nidadhavole",
     "name": "Nidadhavole",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2026/06May2026/Hg9zypkS.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2026/06May2026/Hg9zypkS.pdf",
+    "lat": 16.9051311,
+    "lng": 81.6540622
   },
   {
     "id": "nuzividu",
     "name": "Nuzividu",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/gttHOAnv.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/gttHOAnv.jpg",
+    "lat": 16.7810837,
+    "lng": 80.8481561
   },
   {
     "id": "ongole",
     "name": "Ongole",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2025/23Sep2025/jlF9nVtM.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2025/23Sep2025/jlF9nVtM.pdf",
+    "lat": 15.5058714,
+    "lng": 80.0499454
   },
   {
     "id": "palacole",
     "name": "Palacole",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2026/06May2026/B3ewkrII.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2026/06May2026/B3ewkrII.pdf",
+    "lat": 16.5291705,
+    "lng": 81.6883608
   },
   {
     "id": "palakonda",
     "name": "Palakonda",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/VnBnai1H.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/VnBnai1H.pdf",
+    "lat": 18.6036798,
+    "lng": 83.7559931
   },
   {
     "id": "palamaner",
     "name": "Palamaner",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/I2LP8Vep.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/I2LP8Vep.pdf",
+    "lat": 13.1490375,
+    "lng": 78.7292763
   },
   {
     "id": "palasa-kasibugga",
     "name": "Palasa-Kasibugga",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/NiQWcci6.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/NiQWcci6.pdf",
+    "lat": 18.7719133,
+    "lng": 84.4096945
   },
   {
     "id": "parvathipuram",
     "name": "Parvathipuram",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/pWhFGPRG.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/pWhFGPRG.pdf",
+    "lat": 18.783186,
+    "lng": 83.4278759
   },
   {
     "id": "pedana",
     "name": "Pedana",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2025/15Sep2025/yHtSkfAP.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2025/15Sep2025/yHtSkfAP.pdf",
+    "lat": 16.2608449,
+    "lng": 81.1522283
   },
   {
     "id": "peddapuram",
     "name": "Peddapuram",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/bG29fkuv.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/bG29fkuv.pdf",
+    "lat": 17.0756736,
+    "lng": 82.1433164
   },
   {
     "id": "penukonda",
     "name": "Penukonda",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/Aun9BLrC.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/Aun9BLrC.pdf",
+    "lat": 14.0846808,
+    "lng": 77.5966537
   },
   {
     "id": "piduguralla",
     "name": "Piduguralla",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/kqogXYJg.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/kqogXYJg.jpg",
+    "lat": 16.4822329,
+    "lng": 79.8856947
   },
   {
     "id": "pithapuram",
     "name": "Pithapuram",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/HtJaFW3k.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/HtJaFW3k.pdf",
+    "lat": 17.1133426,
+    "lng": 82.2543331
   },
   {
     "id": "ponnur",
     "name": "Ponnur",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/NbrIgDIj.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/NbrIgDIj.jpg",
+    "lat": 16.0811457,
+    "lng": 80.5369917
   },
   {
     "id": "proddatur",
     "name": "Proddatur",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Dec2024/09Dec2024/Mjn3Iph8.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Dec2024/09Dec2024/Mjn3Iph8.pdf",
+    "lat": 14.7555953,
+    "lng": 78.5501531
   },
   {
     "id": "pulivendula",
     "name": "Pulivendula",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/GCFEUUEY.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/GCFEUUEY.pdf",
+    "lat": 14.422918,
+    "lng": 78.2265949
   },
   {
     "id": "punganur",
     "name": "Punganur",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Jul2026/03Jul2026/Q1sk6E5N.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Jul2026/03Jul2026/Q1sk6E5N.pdf",
+    "lat": 13.4042835,
+    "lng": 78.5567022
   },
   {
     "id": "puttaparthi",
     "name": "Puttaparthi",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/yxXAOlZB.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/yxXAOlZB.pdf",
+    "lat": 14.1636778,
+    "lng": 77.8124982
   },
   {
     "id": "puttur",
     "name": "Puttur",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Apr2025/07Apr2025/wjhJSvOI.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Apr2025/07Apr2025/wjhJSvOI.pdf",
+    "lat": 13.4381418,
+    "lng": 79.5522138
   },
   {
     "id": "rajahmundry",
     "name": "Rajahmundry",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Jun2026/15Jun2026/X7LYKA0z.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Jun2026/15Jun2026/X7LYKA0z.pdf",
+    "lat": 17.0050454,
+    "lng": 81.7804732
   },
   {
     "id": "rajam",
     "name": "Rajam",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/yDsPdD7R.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/yDsPdD7R.pdf",
+    "lat": 18.4497559,
+    "lng": 83.6564679
   },
   {
     "id": "rajampeta",
     "name": "Rajampeta",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/UPGS0kNL.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/UPGS0kNL.jpg",
+    "lat": 14.1935867,
+    "lng": 79.1585757
   },
   {
     "id": "ramachandrapuram",
     "name": "Ramachandrapuram",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2026/06May2026/jRQCo6nz.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2026/06May2026/jRQCo6nz.pdf",
+    "lat": 16.8185549,
+    "lng": 82.0641497
   },
   {
     "id": "rayachoty",
     "name": "Rayachoty",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/0mizN26d.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/0mizN26d.jpg",
+    "lat": 14.0555217,
+    "lng": 78.7510163
   },
   {
     "id": "rayadurg",
     "name": "Rayadurg",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/8ucHwlEU.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/8ucHwlEU.jpg",
+    "lat": 14.6999394,
+    "lng": 76.850043
   },
   {
     "id": "repalle",
     "name": "Repalle",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/HHIvenf2.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/HHIvenf2.pdf",
+    "lat": 16.0192816,
+    "lng": 80.8314567
   },
   {
     "id": "saluru",
     "name": "Saluru",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Jul2026/20Jul2026/6LuxIUuP.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Jul2026/20Jul2026/6LuxIUuP.pdf",
+    "lat": 18.517553,
+    "lng": 83.2050385
   },
   {
     "id": "samarlakot",
     "name": "Samarlakot",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/5ZTlMA6m.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/5ZTlMA6m.pdf",
+    "lat": 17.0453164,
+    "lng": 82.1689895
   },
   {
     "id": "sattenapalle",
     "name": "Sattenapalle",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/FI08EwBZ.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/FI08EwBZ.jpg",
+    "lat": 16.3925393,
+    "lng": 80.1489341
   },
   {
     "id": "srikakulam",
     "name": "Srikakulam",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2025/12Sep2025/HqdnCumY.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2025/12Sep2025/HqdnCumY.pdf",
+    "lat": 18.2949307,
+    "lng": 83.8938844
   },
   {
     "id": "srikalahasti",
     "name": "Srikalahasti",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/zYROhKN5.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/zYROhKN5.pdf",
+    "lat": 13.7518033,
+    "lng": 79.7002288
   },
   {
     "id": "sullurupeta",
     "name": "Sullurupeta",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/LgTEIrJV.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/LgTEIrJV.pdf",
+    "lat": 13.6968547,
+    "lng": 80.0186228
   },
   {
     "id": "tadepalligudem",
     "name": "Tadepalligudem",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/6HsLSfTw.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/6HsLSfTw.pdf",
+    "lat": 16.8102437,
+    "lng": 81.526592
   },
   {
     "id": "tadigadapa",
     "name": "Tadigadapa",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Nov2024/18Nov2024/oFsSiMa9.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Nov2024/18Nov2024/oFsSiMa9.pdf",
+    "lat": 16.4722303,
+    "lng": 80.700072
   },
   {
     "id": "tadipatri",
     "name": "Tadipatri",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Nov2024/22Nov2024/r6xrPrdR.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Nov2024/22Nov2024/r6xrPrdR.pdf",
+    "lat": 14.9069559,
+    "lng": 78.0097071
   },
   {
     "id": "tanuku",
     "name": "Tanuku",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2026/01May2026/Dntnny8y.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2026/01May2026/Dntnny8y.pdf",
+    "lat": 16.7529179,
+    "lng": 81.6760463
   },
   {
     "id": "tenali",
     "name": "Tenali",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/f80xMat8.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/f80xMat8.pdf",
+    "lat": 16.2377735,
+    "lng": 80.6464219
   },
   {
     "id": "tirupati",
     "name": "Tirupati",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/1GRtAP1r.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/1GRtAP1r.pdf",
+    "lat": 13.6316368,
+    "lng": 79.4231711
   },
   {
     "id": "tiruvuru",
     "name": "Tiruvuru",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2026/01May2026/vGMbHx15.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2026/01May2026/vGMbHx15.pdf",
+    "lat": 17.1132968,
+    "lng": 80.6107396
   },
   {
     "id": "tuni",
     "name": "Tuni",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/J8ltx0Z4.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/J8ltx0Z4.pdf",
+    "lat": 17.3614675,
+    "lng": 82.5467956
   },
   {
     "id": "venkatagiri",
     "name": "Venkatagiri",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/MwgYToZp.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/MwgYToZp.pdf",
+    "lat": 13.957582,
+    "lng": 79.5809332
   },
   {
     "id": "vijayawada",
     "name": "Vijayawada",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/Yxdop21t.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/Yxdop21t.pdf",
+    "lat": 16.5115306,
+    "lng": 80.6160469
   },
   {
     "id": "vinukonda",
     "name": "Vinukonda",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Jun2026/17Jun2026/LKb3Yli2.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Jun2026/17Jun2026/LKb3Yli2.pdf",
+    "lat": 16.0522252,
+    "lng": 79.7421271
   },
   {
     "id": "vizianagaram",
     "name": "Vizianagaram",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/WzzZAuVo.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/WzzZAuVo.pdf",
+    "lat": 18.1141255,
+    "lng": 83.4114389
   },
   {
     "id": "vuyyuru",
     "name": "Vuyyuru",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/c7hCc91i.jpg"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Sep2024/12Sep2024/c7hCc91i.jpg",
+    "lat": 16.3649657,
+    "lng": 80.8426132
   },
   {
     "id": "yelamanchili",
     "name": "Yelamanchili",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/6Uj9cyXU.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Oct2024/04Oct2024/6Uj9cyXU.pdf",
+    "lat": 17.5334858,
+    "lng": 82.8183
   },
   {
     "id": "yeleswaram",
     "name": "Yeleswaram",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2026/06May2026/rsHaH03V.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/May2026/06May2026/rsHaH03V.pdf",
+    "lat": 17.2872691,
+    "lng": 82.1052362
   },
   {
     "id": "yemmiganur",
     "name": "Yemmiganur",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Jul2026/03Jul2026/h8teQ7GH.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Jul2026/03Jul2026/h8teQ7GH.pdf",
+    "lat": 15.7680956,
+    "lng": 77.4819037
   },
   {
     "id": "yerraguntla",
     "name": "Yerraguntla",
     "state": "Andhra Pradesh",
-    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Jul2026/03Jul2026/vK9pVRmo.pdf"
+    "fileUrl": "https://dtcp.ap.gov.in/admin/upload_files//uda/Jul2026/03Jul2026/vK9pVRmo.pdf",
+    "lat": 14.6435681,
+    "lng": 78.5338218
   }
 ]
