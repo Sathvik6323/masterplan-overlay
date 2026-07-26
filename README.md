@@ -1,5 +1,7 @@
 # Master Plan GeoRef Tool
 
+**[Launch the Tool →](https://sathvik6323.github.io/masterplan-overlay/)**
+
 A browser-based tool for georeferencing Indian city master plans. Collaborators match points between a master plan image and a satellite map to generate QGIS-compatible ground control point (GCP) files.
 
 ## How it works
