@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <title>Master Plan Georeference Tool</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SZZKNJZTGZ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-SZZKNJZTGZ');</script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'</script>
@@ -102,7 +104,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
   <header class="header">
     <h1>Master Plan GeoRef</h1>
     <select id="citySelect"><option value="">— Select a city —</option></select>
-    <a class="dl-link" id="downloadLink" href="#" target="_blank">Download PDF ↗</a>
+    <a class="dl-link" id="downloadLink" href="#" target="_blank">Download ↗</a>
     <span class="spacer"></span>
     <button class="btn-primary" id="btnSubmit">Submit via Issue</button>
     <button class="btn-success" id="btnDownload" disabled>Download GCP</button>
@@ -116,7 +118,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
       <div class="panel-label">Master Plan</div>
       <div class="drop-zone" id="dropZone">
         <h2>Upload Your Master Plan</h2>
-        <p>Select a city from the dropdown above to get the download link, then upload the PDF or image here.</p>
+        <p>Select a city from the dropdown above to get the download link, then upload the file here.</p>
         <div class="or">— or —</div>
         <label class="file-btn" for="fileInput">Choose File (PDF, PNG, JPG)</label>
         <input type="file" id="fileInput" accept=".pdf,.png,.jpg,.jpeg">
@@ -125,7 +127,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
       <div class="image-container" id="imageContainer" style="display:none"></div>
       <div class="loading-overlay" id="loadingOverlay" style="display:none">
         <div class="spinner"></div>
-        <span>Rendering PDF…</span>
+        <span id="loadingText">Loading file…</span>
       </div>
     </div>
     <div class="panel-divider"></div>
@@ -148,7 +150,7 @@ html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
     <h2>How to Contribute</h2>
     <ol>
       <li><strong>Select a city</strong> from the dropdown — the official PDF link will appear.</li>
-      <li><strong>Download</strong> the PDF and <strong>upload it here</strong> (or upload your own file).</li>
+      <li><strong>Download</strong> the file and <strong>upload it here</strong> (or upload your own file).</li>
       <li><strong>Click on the master plan</strong> (left) at a recognizable landmark (road intersection, building corner).</li>
       <li><strong>Click the same spot</strong> on the satellite map (right). A numbered pair is created.</li>
       <li>Repeat <strong>5–7 times</strong> with points spread across the city. More = better accuracy.</li>
@@ -234,14 +236,16 @@ loadCities();
 CITY_SELECT.addEventListener('change', () => {
   const id = CITY_SELECT.value;
   const city = cities.find(c => c.id === id);
-  if (city && city.pdfUrl) {
-    DOWNLOAD_LINK.href = city.pdfUrl;
+  const fileUrl = city?.fileUrl || city?.pdfUrl;
+  if (city && fileUrl) {
+    DOWNLOAD_LINK.href = fileUrl;
     DOWNLOAD_LINK.style.display = 'inline';
-    DOWNLOAD_LINK.textContent = `Download ${city.name} PDF ↗`;
+    const ext = fileUrl.split('.').pop().toUpperCase();
+    DOWNLOAD_LINK.textContent = `Download ${city.name} (${ext}) ↗`;
     setStatus(`Step 1: Download ${city.name}'s master plan, then upload it below.`);
   } else {
     DOWNLOAD_LINK.style.display = 'none';
-    if (id) setStatus('No PDF link available for this city. Upload your own file.');
+    if (id) setStatus('No file link available for this city. Upload your own file.');
   }
 });
 
@@ -504,6 +508,7 @@ async function handleFile(file) {
   }
   currentFile = file;
   LOADING.style.display = 'flex';
+  document.getElementById('loadingText').textContent = ext === 'pdf' ? 'Rendering PDF…' : 'Loading image…';
   DROP_ZONE.style.display = 'none';
   IMAGE_CONTAINER.style.display = 'block';
 
@@ -630,10 +635,12 @@ function restoreSession() {
     nextId = data.nextId || points.length + 1;
     if (data.city) CITY_SELECT.value = data.city;
     const city = cities.find(c => c.id === data.city);
-    if (city && city.pdfUrl) {
-      DOWNLOAD_LINK.href = city.pdfUrl;
+    const fileUrl = city?.fileUrl || city?.pdfUrl;
+    if (city && fileUrl) {
+      DOWNLOAD_LINK.href = fileUrl;
       DOWNLOAD_LINK.style.display = 'inline';
-      DOWNLOAD_LINK.textContent = `Download ${city.name} PDF ↗`;
+      const ext = fileUrl.split('.').pop().toUpperCase();
+      DOWNLOAD_LINK.textContent = `Download ${city.name} (${ext}) ↗`;
     }
     renderAll();
     updatePointUI();
