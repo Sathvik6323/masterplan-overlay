@@ -34,6 +34,7 @@ You'll be credited on the published map.
 - Satellite tiles: [Esri World Imagery](https://www.esri.com/)
 - PDF rendering: [PDF.js](https://mozilla.github.io/pdf.js/)
 - Maps: [Leaflet](https://leafletjs.com/)
+- **Master Plan Source**: [Directorate of Town & Country Planning, Govt. of Andhra Pradesh](https://dtcp.ap.gov.in/)
 
 ## License
 

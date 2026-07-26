@@ -266,6 +266,7 @@ function initMap() {
     'Satellite': sat,
     'Street Map': street
   }, null, {position: 'topright'}).addTo(map);
+  map.attributionControl.addAttribution('Master Plan Source: <a href="https://dtcp.ap.gov.in/" target="_blank">Directorate of Town &amp; Country Planning, Govt. of Andhra Pradesh</a>');
   map.on('click', onMapClick);
 }
 initMap();
