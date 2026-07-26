@@ -247,16 +247,25 @@ CITY_SELECT.addEventListener('change', () => {
 
 // ============= MAP SETUP =============
 function initMap() {
+  const sat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: '&copy; Esri, Maxar, Earthstar Geographics',
+    maxZoom: 19
+  });
+  const street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors',
+    maxZoom: 19
+  });
   map = L.map('map', {
     center: [20.5937, 78.9629],
     zoom: 5,
     zoomControl: true,
-    attributionControl: true
+    attributionControl: true,
+    layers: [sat]
   });
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    attribution: '&copy; Esri, Maxar, Earthstar Geographics',
-    maxZoom: 19
-  }).addTo(map);
+  L.control.layers({
+    'Satellite': sat,
+    'Street Map': street
+  }, null, {position: 'topright'}).addTo(map);
   map.on('click', onMapClick);
 }
 initMap();
