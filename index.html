@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Master Plan Georeference Tool</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;overflow:hidden}
+/* Layout */
+.app{display:flex;flex-direction:column;height:100vh}
+/* Header */
+.header{background:#1a1a2e;color:#fff;padding:6px 12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-height:44px}
+.header h1{font-size:15px;font-weight:600;margin-right:auto;white-space:nowrap}
+.header select{padding:3px 6px;border-radius:4px;border:none;font-size:13px;max-width:180px}
+.header .dl-link{color:#64ffda;font-size:12px;display:none;text-decoration:none}
+.header .spacer{flex:1;min-width:4px}
+.header button{padding:4px 10px;border:none;border-radius:4px;cursor:pointer;font-size:12px;font-weight:500;white-space:nowrap}
+.btn-primary{background:#0f3460;color:#fff}
+.btn-primary:hover{background:#1a4a80}
+.btn-danger{background:#c0392b;color:#fff}
+.btn-danger:hover{background:#e74c3c}
+.btn-success{background:#27ae60;color:#fff}
+.btn-success:hover{background:#2ecc71}
+.btn-secondary{background:#555;color:#fff}
+.btn-secondary:hover{background:#777}
+.header button:disabled{opacity:0.35;cursor:not-allowed}
+/* Main */
+.main{display:flex;flex:1;overflow:hidden}
+.panel{flex:1;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.panel-divider{width:3px;background:#444;cursor:col-resize;flex-shrink:0}
+.panel-label{position:absolute;top:6px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);color:#fff;padding:2px 12px;border-radius:4px;font-size:12px;z-index:1000;pointer-events:none}
+/* Drop zone */
+.drop-zone{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#f5f6fa;color:#666;z-index:500;border:3px dashed #bdc3c7;margin:8px;border-radius:8px;text-align:center;gap:10px}
+.drop-zone.dragover{border-color:#3498db;background:#eaf2f8}
+.drop-zone h2{font-size:17px;color:#2c3e50}
+.drop-zone p{font-size:13px;max-width:380px;color:#777;line-height:1.5}
+.drop-zone .or{font-size:12px;color:#aaa}
+.drop-zone input[type="file"]{display:none}
+.drop-zone .file-btn{background:#3498db;color:#fff;padding:8px 18px;border-radius:4px;cursor:pointer;font-size:13px;font-weight:500;display:inline-block}
+.drop-zone .file-btn:hover{background:#2980b9}
+/* Image container */
+.image-container{width:100%;height:100%;overflow:auto;cursor:crosshair;background:#e8e8e8;position:relative}
+.image-container canvas{display:block}
+/* Image markers */
+.img-marker{position:absolute;width:26px;height:26px;border-radius:50%;background:rgba(231,76,60,0.88);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;cursor:pointer;transform:translate(-50%,-50%);z-index:100;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.35);transition:transform .12s;user-select:none}
+.img-marker:hover{transform:translate(-50%,-50%) scale(1.25);z-index:101}
+.img-marker.pending{background:rgba(52,152,219,0.88);animation:pulse 1.2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(52,152,219,0.6)}50%{box-shadow:0 0 0 6px rgba(52,152,219,0)}}
+/* Map */
+#map{width:100%;height:100%}
+.map-marker-label{background:rgba(231,76,60,0.88);color:#fff;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;cursor:pointer;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.35);user-select:none}
+.map-marker-label.pending{background:rgba(52,152,219,0.88);animation:pulse 1.2s infinite}
+/* Loading / spinner */
+.loading-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.92);z-index:600;font-size:14px;color:#555;gap:10px;flex-direction:column}
+.spinner{width:28px;height:28px;border:3px solid #ddd;border-top-color:#3498db;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* Footer */
+.footer{background:#1a1a2e;color:#ccc;padding:5px 12px;display:flex;align-items:center;gap:10px;font-size:12px;flex-wrap:wrap;min-height:32px}
+.footer .status{flex:1}
+.footer .count{color:#64ffda;font-weight:600}
+.footer .warn{color:#f39c12}
+.footer .good{color:#2ecc71}
+/* Modals */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:9999;display:flex;align-items:center;justify-content:center}
+.modal{background:#fff;border-radius:8px;padding:24px;max-width:480px;width:90%;box-shadow:0 10px 40px rgba(0,0,0,0.3);max-height:90vh;overflow-y:auto}
+.modal h2{margin-bottom:8px;font-size:17px;color:#2c3e50}
+.modal p{margin-bottom:8px;font-size:13px;line-height:1.6;color:#555}
+.modal ol{margin:8px 0 12px 20px;font-size:13px;line-height:1.7;color:#555}
+.modal .buttons{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
+.modal button{padding:7px 16px;border:none;border-radius:4px;cursor:pointer;font-size:13px;font-weight:500}
+/* Submit panel */
+.submit-panel{background:#f0f9f0;border:1px solid #a3d9a3;border-radius:6px;padding:12px 16px;margin:8px;display:none}
+.submit-panel h3{font-size:14px;color:#27ae60;margin-bottom:4px}
+.submit-panel p{font-size:12px;color:#555;margin-bottom:8px}
+.submit-panel a{color:#3498db;text-decoration:underline;font-size:13px}
+/* Toast */
+.toast{position:fixed;bottom:50px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.88);color:#fff;padding:7px 16px;border-radius:6px;font-size:13px;z-index:9999;transition:opacity .25s;pointer-events:none}
+/* Responsive */
+@media(max-width:768px){
+.header h1{font-size:13px}
+.header select{max-width:140px;font-size:12px}
+.header button{font-size:11px;padding:3px 7px}
+.main{flex-direction:column}
+.panel-divider{display:none}
+.panel{height:50%;min-height:200px}
+.panel-label{font-size:11px;top:3px}
+}
+@media(max-width:480px){
+.header{gap:4px;padding:4px 8px}
+.header select{max-width:110px}
+.header button{padding:2px 6px;font-size:10px}
+.footer{font-size:11px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <h1>Master Plan GeoRef</h1>
+    <select id="citySelect"><option value="">— Select a city —</option></select>
+    <a class="dl-link" id="downloadLink" href="#" target="_blank">Download PDF ↗</a>
+    <span class="spacer"></span>
+    <button class="btn-primary" id="btnSubmit">Submit via Issue</button>
+    <button class="btn-success" id="btnDownload" disabled>Download GCP</button>
+    <button class="btn-secondary" id="btnRemoveLast" disabled>Remove Last</button>
+    <button class="btn-danger" id="btnReset" disabled>Reset All</button>
+    <button class="btn-secondary" id="btnHelp">Help</button>
+  </header>
+
+  <main class="main">
+    <div class="panel" id="imagePanel">
+      <div class="panel-label">Master Plan</div>
+      <div class="drop-zone" id="dropZone">
+        <h2>Upload Your Master Plan</h2>
+        <p>Select a city from the dropdown above to get the download link, then upload the PDF or image here.</p>
+        <div class="or">— or —</div>
+        <label class="file-btn" for="fileInput">Choose File (PDF, PNG, JPG)</label>
+        <input type="file" id="fileInput" accept=".pdf,.png,.jpg,.jpeg">
+        <p style="font-size:11px;color:#999;margin-top:4px">Files stay in your browser. Never uploaded to any server.</p>
+      </div>
+      <div class="image-container" id="imageContainer" style="display:none"></div>
+      <div class="loading-overlay" id="loadingOverlay" style="display:none">
+        <div class="spinner"></div>
+        <span>Rendering PDF…</span>
+      </div>
+    </div>
+    <div class="panel-divider"></div>
+    <div class="panel" id="mapPanel">
+      <div class="panel-label">Satellite Map</div>
+      <div id="map"></div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <span class="status" id="statusText">Upload a master plan to get started</span>
+    <span class="count" id="pointCount">Points: 0</span>
+    <span class="warn" id="pointMin">(min 4)</span>
+  </footer>
+</div>
+
+<!-- Help Modal -->
+<div class="modal-overlay" id="helpModal" style="display:none">
+  <div class="modal">
+    <h2>How to Contribute</h2>
+    <ol>
+      <li><strong>Select a city</strong> from the dropdown — the official PDF link will appear.</li>
+      <li><strong>Download</strong> the PDF and <strong>upload it here</strong> (or upload your own file).</li>
+      <li><strong>Click on the master plan</strong> (left) at a recognizable landmark (road intersection, building corner).</li>
+      <li><strong>Click the same spot</strong> on the satellite map (right). A numbered pair is created.</li>
+      <li>Repeat <strong>5–7 times</strong> with points spread across the city. More = better accuracy.</li>
+      <li>Click <strong>Download GCP</strong> to get the QGIS-compatible file.</li>
+      <li>Click <strong>Submit via Issue</strong> to open a GitHub Issue with your file attached.</li>
+    </ol>
+    <p style="font-size:12px;color:#888">Tip: Pick points far apart from each other (different corners of the city) for best results.</p>
+    <div class="buttons"><button class="btn-primary" onclick="closeModal('helpModal')">Got it</button></div>
+  </div>
+</div>
+
+<!-- Restore Modal -->
+<div class="modal-overlay" id="restoreModal" style="display:none">
+  <div class="modal">
+    <h2>Unfinished Session Found</h2>
+    <p id="restoreInfo">You have <strong>N</strong> points placed for <strong>City</strong> from an earlier session.</p>
+    <p>You'll need to upload the PDF again to continue.</p>
+    <div class="buttons">
+      <button class="btn-danger" onclick="dismissRestore()">Start Fresh</button>
+      <button class="btn-primary" onclick="restoreSession()">Restore</button>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm modal -->
+<div class="modal-overlay" id="confirmModal" style="display:none">
+  <div class="modal">
+    <h2 id="confirmTitle">Confirm</h2>
+    <p id="confirmMessage">Are you sure?</p>
+    <div class="buttons">
+      <button class="btn-secondary" onclick="closeModal('confirmModal')">Cancel</button>
+      <button class="btn-danger" id="confirmYes">Yes</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+// ============= STATE =============
+let points = [];            // {id, pixelX, pixelY, lat, lng}
+let pendingSide = null;     // 'image' | 'map' | null
+let pendingData = null;     // {pixelX, pixelY} or {lat, lng}
+let nextId = 1;
+let map = null;
+let canvas = null;
+let canvasBaseWidth = 0;    // natural render width
+let canvasBaseHeight = 0;
+let currentFile = null;     // File object
+let pdfDoc = null;
+let restoreResolve = null;
+
+const LS_KEY = 'mp_georef_session';
+const IMAGE_CONTAINER = document.getElementById('imageContainer');
+const DROP_ZONE = document.getElementById('dropZone');
+const FILE_INPUT = document.getElementById('fileInput');
+const LOADING = document.getElementById('loadingOverlay');
+const CITY_SELECT = document.getElementById('citySelect');
+const DOWNLOAD_LINK = document.getElementById('downloadLink');
+const STATUS = document.getElementById('statusText');
+const POINT_COUNT = document.getElementById('pointCount');
+const POINT_MIN = document.getElementById('pointMin');
+
+// ============= CITIES =============
+let cities = [];
+
+async function loadCities() {
+  try {
+    const resp = await fetch('cities.json');
+    cities = await resp.json();
+    cities.sort((a, b) => a.name.localeCompare(b.name));
+    cities.forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c.id;
+      opt.textContent = `${c.name}, ${c.state}`;
+      CITY_SELECT.appendChild(opt);
+    });
+  } catch(e) {
+    // cities.json not loaded yet, user can still upload manually
+  }
+}
+loadCities();
+
+CITY_SELECT.addEventListener('change', () => {
+  const id = CITY_SELECT.value;
+  const city = cities.find(c => c.id === id);
+  if (city && city.pdfUrl) {
+    DOWNLOAD_LINK.href = city.pdfUrl;
+    DOWNLOAD_LINK.style.display = 'inline';
+    DOWNLOAD_LINK.textContent = `Download ${city.name} PDF ↗`;
+    setStatus(`Step 1: Download ${city.name}'s master plan, then upload it below.`);
+  } else {
+    DOWNLOAD_LINK.style.display = 'none';
+    if (id) setStatus('No PDF link available for this city. Upload your own file.');
+  }
+});
+
+// ============= MAP SETUP =============
+function initMap() {
+  map = L.map('map', {
+    center: [20.5937, 78.9629],
+    zoom: 5,
+    zoomControl: true,
+    attributionControl: true
+  });
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: '&copy; Esri, Maxar, Earthstar Geographics',
+    maxZoom: 19
+  }).addTo(map);
+  map.on('click', onMapClick);
+}
+initMap();
+
+function updatePointUI() {
+  const count = points.length;
+  POINT_COUNT.textContent = `Points: ${count}`;
+  document.getElementById('btnDownload').disabled = count < 4;
+  document.getElementById('btnRemoveLast').disabled = count === 0 && !pendingSide;
+  document.getElementById('btnReset').disabled = count === 0 && !pendingSide;
+
+  if (count === 0 && !pendingSide) {
+    POINT_MIN.textContent = '(min 4)';
+    POINT_MIN.className = 'warn';
+  } else if (count < 4) {
+    POINT_MIN.textContent = `(${4 - count} more needed)`;
+    POINT_MIN.className = 'warn';
+  } else {
+    POINT_MIN.textContent = '✓ Ready!';
+    POINT_MIN.className = 'good';
+  }
+}
+
+function setStatus(msg, isGood) {
+  STATUS.textContent = msg;
+  STATUS.className = 'status' + (isGood ? ' good' : '');
+}
+
+// ============= IMAGE CLICK =============
+function onImageClick(e) {
+  if (!canvas) return;
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width;
+  const scaleY = canvas.height / rect.height;
+  const pixelX = Math.round((e.clientX - rect.left) * scaleX);
+  const pixelY = Math.round((e.clientY - rect.top) * scaleY);
+  if (pixelX < 0 || pixelY < 0 || pixelX > canvas.width || pixelY > canvas.height) return;
+
+  if (pendingSide === 'image') {
+    // Replace pending image point
+    pendingData = {pixelX, pixelY};
+    renderImageMarkers();
+    return;
+  }
+  if (pendingSide === 'map') {
+    // Complete the pair: map was clicked first
+    const point = {id: nextId++, pixelX, pixelY, lat: pendingData.lat, lng: pendingData.lng};
+    points.push(point);
+    pendingSide = null;
+    pendingData = null;
+    renderAll();
+    saveSession();
+    setStatus(`Point #${point.id} added. ${points.length < 4 ? 'Place ' + (4 - points.length) + ' more' : 'Ready to download!'}`);
+    updatePointUI();
+    return;
+  }
+  // No pending point: start new one from image
+  pendingSide = 'image';
+  pendingData = {pixelX, pixelY};
+  renderImageMarkers();
+  setStatus(`Point #${nextId}: image clicked. Now click the same spot on the map.`);
+}
+
+// ============= MAP CLICK =============
+function onMapClick(e) {
+  const lat = e.latlng.lat;
+  const lng = e.latlng.lng;
+
+  if (pendingSide === 'map') {
+    // Replace pending map point
+    pendingData = {lat, lng};
+    renderMapMarkers();
+    return;
+  }
+  if (pendingSide === 'image') {
+    // Complete the pair: image was clicked first
+    const point = {id: nextId++, pixelX: pendingData.pixelX, pixelY: pendingData.pixelY, lat, lng};
+    points.push(point);
+    pendingSide = null;
+    pendingData = null;
+    renderAll();
+    saveSession();
+    setStatus(`Point #${point.id} added. ${points.length < 4 ? 'Place ' + (4 - points.length) + ' more' : 'Ready to download!'}`);
+    updatePointUI();
+    return;
+  }
+  // No pending point: start new one from map
+  pendingSide = 'map';
+  pendingData = {lat, lng};
+  renderMapMarkers();
+  setStatus(`Point #${nextId}: map clicked. Now click the same spot on the master plan image.`);
+}
+
+// ============= RENDER MARKERS =============
+function renderImageMarkers() {
+  // Remove old markers
+  IMAGE_CONTAINER.querySelectorAll('.img-marker').forEach(el => el.remove());
+
+  // Completed points
+  points.forEach(p => {
+    const div = document.createElement('div');
+    div.className = 'img-marker';
+    div.textContent = p.id;
+    div.style.left = p.pixelX + 'px';
+    div.style.top = p.pixelY + 'px';
+    div.title = `Point #${p.id} — ${p.lat.toFixed(5)}, ${p.lng.toFixed(5)}`;
+    div.addEventListener('click', (ev) => { ev.stopPropagation(); confirmDeletePoint(p.id); });
+    IMAGE_CONTAINER.appendChild(div);
+  });
+
+  // Pending point on image side
+  if (pendingSide === 'image' && pendingData) {
+    const div = document.createElement('div');
+    div.className = 'img-marker pending';
+    div.textContent = nextId;
+    div.style.left = pendingData.pixelX + 'px';
+    div.style.top = pendingData.pixelY + 'px';
+    div.title = 'Pending — click the corresponding spot on the map';
+    div.addEventListener('click', (ev) => { ev.stopPropagation(); cancelPending(); });
+    IMAGE_CONTAINER.appendChild(div);
+  }
+}
+
+function renderMapMarkers() {
+  // Remove old markers
+  document.querySelectorAll('.map-marker-label').forEach(el => el.remove());
+
+  points.forEach(p => {
+    const icon = L.divIcon({
+      className: '',
+      html: `<div class="map-marker-label" title="Point #${p.id} — ${p.pixelX}, ${p.pixelY}">${p.id}</div>`,
+      iconSize: [26, 26],
+      iconAnchor: [13, 13]
+    });
+    const marker = L.marker([p.lat, p.lng], {icon}).addTo(map);
+    marker.on('click', () => confirmDeletePoint(p.id));
+    marker._pointId = p.id;
+  });
+
+  if (pendingSide === 'map' && pendingData) {
+    const icon = L.divIcon({
+      className: '',
+      html: `<div class="map-marker-label pending">${nextId}</div>`,
+      iconSize: [26, 26],
+      iconAnchor: [13, 13]
+    });
+    const marker = L.marker([pendingData.lat, pendingData.lng], {icon}).addTo(map);
+    marker.on('click', cancelPending);
+  }
+}
+
+function renderAll() {
+  renderImageMarkers();
+  renderMapMarkers();
+}
+
+// ============= POINT MANAGEMENT =============
+function cancelPending() {
+  pendingSide = null;
+  pendingData = null;
+  renderAll();
+  setStatus('Pending point cancelled.');
+}
+
+function removeLast() {
+  if (pendingSide) {
+    cancelPending();
+    return;
+  }
+  if (points.length === 0) return;
+  const removed = points.pop();
+  renderAll();
+  saveSession();
+  updatePointUI();
+  setStatus(`Point #${removed.id} removed.`);
+}
+
+function confirmDeletePoint(id) {
+  const pts = document.getElementById('confirmMessage');
+  pts.textContent = `Delete point #${id}? This cannot be undone.`;
+  document.getElementById('confirmTitle').textContent = 'Delete Point';
+  document.getElementById('confirmModal').style.display = 'flex';
+  document.getElementById('confirmYes').onclick = () => {
+    points = points.filter(p => p.id !== id);
+    // Renumber (re-assign IDs sequentially)
+    points.forEach((p, i) => p.id = i + 1);
+    nextId = points.length + 1;
+    renderAll();
+    saveSession();
+    updatePointUI();
+    closeModal('confirmModal');
+    setStatus(`Point #${id} deleted.`);
+  };
+}
+
+function resetAll() {
+  if (points.length === 0 && !pendingSide) return;
+  const pts = document.getElementById('confirmMessage');
+  pts.textContent = `Reset all ${points.length} point${points.length !== 1 ? 's' : ''} and clear pending?`;
+  document.getElementById('confirmTitle').textContent = 'Reset All';
+  document.getElementById('confirmModal').style.display = 'flex';
+  document.getElementById('confirmYes').onclick = () => {
+    points = [];
+    pendingSide = null;
+    pendingData = null;
+    nextId = 1;
+    renderAll();
+    saveSession();
+    updatePointUI();
+    closeModal('confirmModal');
+    setStatus('All points cleared.');
+  };
+}
+
+// ============= FILE HANDLING =============
+FILE_INPUT.addEventListener('change', (e) => {
+  if (e.target.files.length > 0) handleFile(e.target.files[0]);
+});
+
+DROP_ZONE.addEventListener('dragover', (e) => { e.preventDefault(); DROP_ZONE.classList.add('dragover'); });
+DROP_ZONE.addEventListener('dragleave', () => DROP_ZONE.classList.remove('dragover'));
+DROP_ZONE.addEventListener('drop', (e) => {
+  e.preventDefault();
+  DROP_ZONE.classList.remove('dragover');
+  if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
+});
+
+document.getElementById('fileInput').addEventListener('click', function() { this.value = ''; });
+
+async function handleFile(file) {
+  const ext = file.name.split('.').pop().toLowerCase();
+  if (!['pdf', 'png', 'jpg', 'jpeg'].includes(ext)) {
+    setStatus('Unsupported file type. Please upload PDF, PNG, or JPG.');
+    return;
+  }
+  currentFile = file;
+  LOADING.style.display = 'flex';
+  DROP_ZONE.style.display = 'none';
+  IMAGE_CONTAINER.style.display = 'block';
+
+  try {
+    if (ext === 'pdf') {
+      await renderPDF(file);
+    } else {
+      await renderImage(file);
+    }
+    setStatus(`Loaded: ${file.name}. Click on the image, then the map to place points.`);
+  } catch(err) {
+    setStatus('Error loading file: ' + err.message);
+    DROP_ZONE.style.display = 'flex';
+    IMAGE_CONTAINER.style.display = 'none';
+  }
+  LOADING.style.display = 'none';
+}
+
+async function renderPDF(file) {
+  const arrayBuffer = await file.arrayBuffer();
+  pdfDoc = await pdfjsLib.getDocument({data: arrayBuffer}).promise;
+  const page = await pdfDoc.getPage(1);
+  const vp = page.getViewport({scale: 1});
+  const panel = document.getElementById('imagePanel');
+  const maxW = Math.min(panel.clientWidth - 16, 2000);
+  const scale = maxW / vp.width;
+  const scaled = page.getViewport({scale});
+  canvas = document.createElement('canvas');
+  canvas.width = scaled.width;
+  canvas.height = scaled.height;
+  canvasBaseWidth = scaled.width;
+  canvasBaseHeight = scaled.height;
+  const ctx = canvas.getContext('2d');
+  await page.render({canvasContext: ctx, viewport: scaled}).promise;
+  IMAGE_CONTAINER.innerHTML = '';
+  IMAGE_CONTAINER.appendChild(canvas);
+  IMAGE_CONTAINER.addEventListener('click', onImageClick, {once: false});
+}
+
+async function renderImage(file) {
+  const url = URL.createObjectURL(file);
+  const img = new Image();
+  await new Promise((resolve, reject) => {
+    img.onload = resolve;
+    img.onerror = reject;
+    img.src = url;
+  });
+  const panel = document.getElementById('imagePanel');
+  const maxW = Math.min(panel.clientWidth - 16, 2000);
+  const scale = Math.min(maxW / img.naturalWidth, 1);
+  canvas = document.createElement('canvas');
+  canvas.width = img.naturalWidth * scale;
+  canvas.height = img.naturalHeight * scale;
+  canvasBaseWidth = canvas.width;
+  canvasBaseHeight = canvas.height;
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+  URL.revokeObjectURL(url);
+  IMAGE_CONTAINER.innerHTML = '';
+  IMAGE_CONTAINER.appendChild(canvas);
+  IMAGE_CONTAINER.addEventListener('click', onImageClick, {once: false});
+}
+
+// ============= GCP DOWNLOAD =============
+document.getElementById('btnDownload').addEventListener('click', downloadGCP);
+
+function downloadGCP() {
+  if (points.length < 4) {
+    setStatus('Need at least 4 points to generate GCP file.');
+    return;
+  }
+  let lines = '# Master Plan Georeference Tool\n';
+  lines += '# Format: mapX mapY pixelX pixelY enabled dX dY residual\n';
+  lines += '# crs:EPSG:4326\n';
+  points.forEach(p => {
+    lines += `${p.lng} ${p.lat} ${p.pixelX} ${p.pixelY} 1 0 0 0\n`;
+  });
+  const city = CITY_SELECT.value || 'masterplan';
+  const blob = new Blob([lines], {type: 'text/plain'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `${city}_points.gcp`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+  setStatus(`Downloaded ${city}_points.gcp with ${points.length} points. Ready to submit!`, true);
+}
+
+// ============= SUBMIT VIA ISSUE =============
+document.getElementById('btnSubmit').addEventListener('click', submitIssue);
+
+function submitIssue() {
+  if (points.length < 4) {
+    setStatus('Place at least 4 points before submitting.');
+    return;
+  }
+  const city = CITY_SELECT.value || 'unknown';
+  const cityName = CITY_SELECT.selectedOptions[0]?.textContent || city;
+  const body = encodeURIComponent(
+    `## City\n${cityName}\n\n## Points\n${points.length} control points placed.\n\n## GCP File\nPlease attach the downloaded \`${city}_points.gcp\` file to this issue.\n\n---\n*Submitted via Master Plan GeoRef Tool*`
+  );
+  window.open(`https://github.com/Sathvik6323/masterplan-overlay/issues/new?title=${encodeURIComponent(`Master Plan: ${cityName}`)}&body=${body}`, '_blank');
+  setStatus('GitHub Issue opened. Please attach your .gcp file and submit.', true);
+}
+
+// ============= SESSION MANAGEMENT =============
+function saveSession() {
+  try {
+    const data = {
+      points: points.map(p => ({id: p.id, pixelX: p.pixelX, pixelY: p.pixelY, lat: p.lat, lng: p.lng})),
+      nextId,
+      city: CITY_SELECT.value,
+      timestamp: Date.now()
+    };
+    localStorage.setItem(LS_KEY, JSON.stringify(data));
+  } catch(e) {}
+}
+
+function restoreSession() {
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    if (!raw) return;
+    const data = JSON.parse(raw);
+    points = data.points;
+    nextId = data.nextId || points.length + 1;
+    if (data.city) CITY_SELECT.value = data.city;
+    const city = cities.find(c => c.id === data.city);
+    if (city && city.pdfUrl) {
+      DOWNLOAD_LINK.href = city.pdfUrl;
+      DOWNLOAD_LINK.style.display = 'inline';
+      DOWNLOAD_LINK.textContent = `Download ${city.name} PDF ↗`;
+    }
+    renderAll();
+    updatePointUI();
+    closeModal('restoreModal');
+    setStatus(`Session restored with ${points.length} points. Upload your PDF to see image markers.`);
+  } catch(e) {
+    localStorage.removeItem(LS_KEY);
+  }
+}
+
+function dismissRestore() {
+  localStorage.removeItem(LS_KEY);
+  closeModal('restoreModal');
+}
+
+function checkSession() {
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    if (!raw) return;
+    const data = JSON.parse(raw);
+    if (!data.points || data.points.length === 0) return;
+    const cityName = CITY_SELECT.querySelector(`option[value="${data.city}"]`)?.textContent || data.city || 'Unknown';
+    const age = Math.round((Date.now() - (data.timestamp || 0)) / (1000 * 60 * 60));
+    document.getElementById('restoreInfo').innerHTML =
+      `You have <strong>${data.points.length}</strong> point${data.points.length !== 1 ? 's' : ''} placed for <strong>${cityName}</strong> from ${age > 1 ? `${age} hours ago` : 'earlier today'}.`;
+    document.getElementById('restoreModal').style.display = 'flex';
+  } catch(e) {
+    localStorage.removeItem(LS_KEY);
+  }
+}
+
+// ============= HELP / MODAL =============
+document.getElementById('btnHelp').addEventListener('click', () => {
+  document.getElementById('helpModal').style.display = 'flex';
+});
+
+document.getElementById('btnRemoveLast').addEventListener('click', removeLast);
+document.getElementById('btnReset').addEventListener('click', resetAll);
+
+function closeModal(id) {
+  document.getElementById(id).style.display = 'none';
+}
+
+// Close modals on overlay click
+document.querySelectorAll('.modal-overlay').forEach(el => {
+  el.addEventListener('click', (e) => {
+    if (e.target === el) el.style.display = 'none';
+  });
+});
+
+// ============= KEYBOARD SHORTCUTS =============
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'z' && (e.ctrlKey || e.metaKey)) {
+    e.preventDefault();
+    removeLast();
+  }
+  if (e.key === 'Escape') {
+    if (pendingSide) cancelPending();
+  }
+});
+
+// ============= INIT =============
+setStatus('Select a city or upload a master plan to get started.');
+
+// Check session on load after cities are loaded
+setTimeout(checkSession, 1000);
+</script>
+</body>
+</html>
